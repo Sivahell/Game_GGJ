@@ -26,6 +26,7 @@ public class MouseSlideUI : MonoBehaviour
     }
     private void StartLine(Vector2 pos)
     {
+
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, WorldPos(pos));
         lineRenderer.SetPosition(1, WorldPos(pos));
@@ -33,7 +34,7 @@ public class MouseSlideUI : MonoBehaviour
 
     private void UpdateLine(Vector2 pos)
     {
-
+        lineRenderer.SetPosition(0, WorldPos(BladeControlDetecter.instance.PointSticked()));
         lineRenderer.SetPosition(1, WorldPos(pos));
     }
     private void StopLine(Vector2 pos)

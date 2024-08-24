@@ -14,6 +14,8 @@ public class MouseInputManager : MonoBehaviour
     public MosueEvent OnClick;
     public MosueEvent OnHold;
     public MosueEvent OnCancel;
+
+    private Vector2 startPoint;
     private void Awake()
     {
         instance = this;
@@ -37,11 +39,15 @@ public class MouseInputManager : MonoBehaviour
 
     private void StartSlide(InputAction.CallbackContext obj)
     {
-        OnClick.Invoke(MouseValue());
+        var mv = MouseValue();
+        if (!BladeControlDetecter.instance.CheckTouched(mv))
+            return;
+        startPoint = mv;
+        OnClick.Invoke(mv);
         if (mouseSlideCoro != null)
             StopCoroutine(mouseSlideCoro);
         mouseSlideCoro = StartCoroutine(MouseSlide());
-        BladeControlDetecter.instance.CheckTouched(MouseValue());
+       
     }
     private void StopSlide(InputAction.CallbackContext obj)
     {
@@ -60,7 +66,9 @@ public class MouseInputManager : MonoBehaviour
     {
         while(true)
         {
-            OnHold.Invoke(MouseValue());
+            var mv = MouseValue();
+            OnHold.Invoke(mv);
+            BladeMove.instance.MoveTo(mv);
             yield return null;
         }
     }
