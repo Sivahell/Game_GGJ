@@ -27,12 +27,12 @@ public class Hostile_Mob_Maker : MonoBehaviour
         }
 
     }
-    private void Update()
-    {
-        if (time >= 1f)
-            Takeout(Random.Range(Random_X_Min, Random_X_Max), this.transform.position.y, Random.Range(Random_Z_Min, Random_Z_Max), MobType.Aas);
-        else time += Time.deltaTime;
-    }
+    //private void Update()
+    //{
+    //    if (time >= 1f)
+    //        Takeout(Random.Range(Random_X_Min, Random_X_Max), this.transform.position.y, Random.Range(Random_Z_Min, Random_Z_Max), MobType.Aas);
+    //    else time += Time.deltaTime;
+    //}
     public void Takeout(float X,float Y,float Z, MobType mobtype)
     {
         Hostile_Mob mobdata = mobDatasDictionary[mobtype];

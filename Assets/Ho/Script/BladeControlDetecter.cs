@@ -36,7 +36,7 @@ public class BladeControlDetecter : MonoBehaviour
         clickPointDistFormTop = distb;
         float s = (distA + distb + distc) / 2;
        float dist=2 * Mathf.Sqrt(s * (s - distA) * (s - distb) * (s - distc)) / distA;
-        return dist<buffer;
+        return dist<buffer && Vector2.Angle((Vector2)pa - clickPoint,(Vector2)(pa - pb))<90&& Vector2.Angle((Vector2)pb - clickPoint, (Vector2)(pb - pa))< 90; 
     }
 
     internal float RotateWay(Vector2 way)
