@@ -60,8 +60,10 @@ public class BladeControlDetecter : MonoBehaviour
     {
         var pa = Camera.main.WorldToScreenPoint(bladeTop.position);
         var pb = Camera.main.WorldToScreenPoint(bladeBottom.position);
-        var angle = Vector2.Angle(way.normalized, (pb - pa).normalized);
-        Debug.Log("A"+angle);
+        var signAngle = Vector2.Angle(way.normalized, (pb - pa).normalized);
+        float angle = Mathf.Abs(signAngle);
+        Debug.Log("A" + (angle - 90));
+        
         return angle;
     }
 
