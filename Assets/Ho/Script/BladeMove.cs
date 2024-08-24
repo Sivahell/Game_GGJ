@@ -11,7 +11,7 @@ public class BladeMove : MonoBehaviour
 
     public Transform bladeBody;
     public float overFactor = 1;
-    public float overDistance = 100;
+  
     public float overForce = 100;
     public float normalforce = 1;
     public float normalMaxSpeed = 1;
@@ -27,7 +27,7 @@ public class BladeMove : MonoBehaviour
     Coroutine accCoro;
     bool pulling = false;
     public Bounds bounds;
-    Vector3 pos => transform.position;
+    public Bounds smallBounds;
     private void OnEnable()
     {
         MouseInputManager.instance.OnClick += StartMove;
@@ -51,10 +51,11 @@ public class BladeMove : MonoBehaviour
     public void StartMove(Vector2 v2)
     {
 
-        if (moveCoro == null)
+        if (moveCoro != null)
         {
-            moveCoro = StartCoroutine(Move());
+            StopCoroutine(moveCoro);
         }
+        moveCoro = StartCoroutine(Move());
         accCoro = StartCoroutine(Acc());
         pulling = true;
     }
@@ -62,7 +63,7 @@ public class BladeMove : MonoBehaviour
     public IEnumerator Move()
     {
         Debug.Log("Start");
-        while (InBoarder())
+        while (InBoarder(bounds))
         {
             yield return null;
             if (!pulling)
@@ -99,14 +100,31 @@ public class BladeMove : MonoBehaviour
 
 
         }
+        velocity = Vector3.zero;
+        MouseSlideUI.instance.StopLine();
+        while (!InBoarder(smallBounds))
+        {
+            Debug.Log("back");
+            Vector3 _way= transform.position - bounds.center;
+            _way.z = 0;
+            velocity -= _way.normalized * 40 * Time.deltaTime;
+            transform.position += velocity * Time.deltaTime;
 
+            yield return null;
+        }
+        velocity = Vector3.zero;
     }
 
    
 
     internal void SetSpeedFactor(float v)
     {
+        if(v>0)
         overFactor = v;
+        else
+        {
+            overFactor = 0;
+        }
     }
 
     private Vector2 PullForce()
@@ -117,10 +135,8 @@ public class BladeMove : MonoBehaviour
 
     IEnumerator Acc()
     {
-        while (true)
+        while (InBoarder(bounds))
         {
-
-
             var startPoint = BladeControlDetecter.instance.PointSticked();
             movingWay = _tagetPoint - startPoint;
             velocity += (Vector3)PullForce() * Time.deltaTime;
@@ -136,6 +152,12 @@ public class BladeMove : MonoBehaviour
 
     private void StopAcclerate(Vector2 mousePos)
     {
+        StopAcclerate();
+    }
+
+
+    private void StopAcclerate()
+    {
         pulling = false;
         if (accCoro != null)
             StopCoroutine(accCoro);
@@ -148,9 +170,9 @@ public class BladeMove : MonoBehaviour
     }
 
 
-    private bool InBoarder()
+    private bool InBoarder(Bounds b)
     {
-        return bounds.Contains(transform.position);
+        return b.Contains(transform.position);
         
     }
 }

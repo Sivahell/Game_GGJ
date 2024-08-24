@@ -887,7 +887,7 @@ Transform:
   m_GameObject: {fileID: 1364871034}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.68, z: -0}
+  m_LocalPosition: {x: 0, y: -1.33, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1089,7 +1089,7 @@ Transform:
   m_GameObject: {fileID: 1392089532}
   serializedVersion: 2
   m_LocalRotation: {x: 0.33618313, y: 0, z: 0, w: 0.94179666}
-  m_LocalPosition: {x: 0, y: 1.749, z: 0.667}
+  m_LocalPosition: {x: 0, y: 1.749, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bladeTop: {fileID: 1861274124}
   bladeBottom: {fileID: 1364871035}
-  buffer: 20
+  buffer: 50
   clickPointDistFormTop: 0
 --- !u!114 &1392089535
 MonoBehaviour:
@@ -1126,15 +1126,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bladeBody: {fileID: 1595601748}
   overFactor: 1
-  overDistance: 100
-  overForce: 100
-  normalforce: 5
-  normalMaxSpeed: 3
-  overMaxSpeed: 0
+  overForce: 30
+  normalforce: 3
+  normalMaxSpeed: 10
+  overMaxSpeed: 50
   rotateSpeed: 900
   bladeRotateSpeed: 600
   bladeRotateLimit: 80
-  slowFactor: 5
+  slowFactor: 10
+  bounds:
+    m_Center: {x: 0, y: 2, z: 1}
+    m_Extent: {x: 2, y: 1, z: 5}
+  smallBounds:
+    m_Center: {x: 0, y: 2, z: 1}
+    m_Extent: {x: 1, y: 0.4, z: 5}
 --- !u!1 &1421959614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1519,7 @@ Transform:
   m_GameObject: {fileID: 1861274123}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
