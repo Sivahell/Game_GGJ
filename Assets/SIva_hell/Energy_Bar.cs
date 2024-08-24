@@ -13,4 +13,5 @@ public class Energy_Bar : MonoBehaviour
         slider.value = SetEnergy;
     }
     public void UpdateEnergy() { slider.value++; }
+    public void UpdateEnergy(int energy) { slider.value = energy; }
 }

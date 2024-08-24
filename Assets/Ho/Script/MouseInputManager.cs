@@ -47,7 +47,8 @@ public class MouseInputManager : MonoBehaviour
         if (mouseSlideCoro != null)
             StopCoroutine(mouseSlideCoro);
         mouseSlideCoro = StartCoroutine(MouseSlide());
-       
+     //   BladeMove.instance.StartMove();
+
     }
     private void StopSlide(InputAction.CallbackContext obj)
     {
@@ -68,7 +69,7 @@ public class MouseInputManager : MonoBehaviour
         {
             var mv = MouseValue();
             OnHold.Invoke(mv);
-            BladeMove.instance.MoveTo(mv);
+
             yield return null;
         }
     }
