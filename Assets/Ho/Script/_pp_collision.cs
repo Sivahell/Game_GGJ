@@ -7,6 +7,7 @@ public class _pp_collision : MonoBehaviour
     public Energy_Bar hpBar;
     public ParticleSystem blood;
     public int hp = 10;
+    public AudioSource hittedSfx;
     private void Start()
     {
         hpBar.SetStartEnergy(hp, hp);
@@ -16,11 +17,11 @@ public class _pp_collision : MonoBehaviour
         hp--;
         var hitPos = other.GetComponent<MobControl>().HitPlayerPos();
 
-       var point= Camera.main.WorldToScreenPoint(hitPos);
 
-
+        hittedSfx.transform.position = hitPos;
         blood.transform.position = hitPos;
         blood.Play();
+        hittedSfx.Play();
         hpBar.UpdateEnergy(hp);
         if (hp <= 0)
         {

@@ -28,6 +28,7 @@ public class BladeMove : MonoBehaviour
     bool pulling = false;
     public Bounds bounds;
     public Bounds smallBounds;
+    
     private void OnEnable()
     {
         MouseInputManager.instance.OnClick += StartMove;

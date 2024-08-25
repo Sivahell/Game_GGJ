@@ -8,6 +8,7 @@ public class _Blade_collision : MonoBehaviour
     public Energy_Bar energyBar;
     public int max_Energy = 10;
     private int energy = 0;
+    public AudioSource slashSfx;
     private void Start()
     {
         energyBar.SetStartEnergy(max_Energy, energy);
@@ -16,7 +17,7 @@ public class _Blade_collision : MonoBehaviour
     {
         energy++;
         other.GetComponent<MobControl>().BeHitted();
-      
+        slashSfx.Play();
         energyBar.UpdateEnergy(energy);
         if (energy >= 10)
         {
