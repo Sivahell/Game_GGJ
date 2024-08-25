@@ -77,24 +77,15 @@ public class BladeMove : MonoBehaviour
                     velocity = Vector3.zero;
             }
 
-
-
-
             float lr = BladeControlDetecter.instance.RotateWay(movingWay);
             float yRotate = 90 * lr;
             bladeBody.localRotation = Quaternion.RotateTowards(bladeBody.localRotation, Quaternion.Euler(new Vector3(0, yRotate, 0)), (rotateSpeed + overFactor * rotateSpeed) * Time.deltaTime);
-
-
             transform.position += velocity * Time.deltaTime;
-
 
             float zRotate = Vector2.SignedAngle(movingWay, Vector2.up);
             float zxAngle = Vector2.SignedAngle(Vector2.right, movingWay);
             if (zxAngle < 0)
                 zRotate += 180;
-
-
-
             if (zRotate < bladeRotateLimit || zRotate > -bladeRotateLimit)
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, 0, zRotate)), bladeRotateSpeed * Time.deltaTime);
 
@@ -173,9 +164,13 @@ public class BladeMove : MonoBehaviour
     private bool InBoarder(Bounds b)
     {
         return b.Contains(transform.position);
-        
+   
     }
+
+    
 }
+
+
 
 
 

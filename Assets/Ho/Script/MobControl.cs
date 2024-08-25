@@ -5,25 +5,45 @@ using UnityEngine;
 
 public class MobControl : MonoBehaviour
 {
-    float Speed = 0.5f;
+    public float speed = 0.5f;
+    private float _speed = 0;
     public Flooring flooring;
-    public Animator ani;
-
-    private void Awake()
+    public SpriteRenderer sp;
+    public SpriteRenderer sd;
+    public ParticleSystem slash;
+    public ParticleSystem smoke;
+    //animator sss;
+    public void StartMove(MobData mobData)
     {
-        ani = GetComponent<Animator>();
-    }
-    public void StartMove(Hostile_Mob mobData)
-    {
+        //animator.runtime~~~=mobData.animtrctr;
+        _speed = mobData.speed;
         flooring.SetFloor();
-        ani.runtimeAnimatorController = mobData.China_Ani;
+
+        sp.sprite = mobData.mobsprite;
+        sd.sprite = mobData.mobsprite;
+
         gameObject.SetActive(true);
     }
 
-
-    void LateUpdate() 
+    internal void BeHitted()
     {
-        this.transform.position += new Vector3(0, 0, -Speed * Time.deltaTime * 20);
+        _speed = 0;
+        slash.Play();
+        
+
+        LeanTween.value(1, 0, 0.8f).setOnUpdate((float val) =>
+        {
+            sp.color = new Color(1, 1, 1, val);
+            sd.color = new Color(0, 0, 0, val);
+        });
+        LeanTween.delayedCall(0.2f, () => smoke.Play());
+        LeanTween.delayedCall(1f, () => SpecialInstance.instance.mobMaker.IsBack(this));
+    }
+
+
+    void LateUpdate()
+    {
+        this.transform.position += new Vector3(0, 0, -_speed * Time.deltaTime);
     }
 
     internal void Deactive()

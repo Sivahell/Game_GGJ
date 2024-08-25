@@ -15,12 +15,13 @@ public class _Blade_collision : MonoBehaviour
     private void OnTriggerEnter(Collider other)//¸I¼²Åé­«Å|
     {
         energy++;
-        SpecialInstance.instance.mobMaker.IsBack(other.GetComponent<MobControl>());
+        other.GetComponent<MobControl>().BeHitted();
+      
         energyBar.UpdateEnergy(energy);
         if (energy >= 10)
         {
             Debug.Log("¼C Energy is max");
         }
         BladeMove.instance.SetSpeedFactor(1-(float)energy/(float)max_Energy);
-    }
+    }   
 }

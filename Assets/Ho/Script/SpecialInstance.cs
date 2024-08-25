@@ -20,12 +20,12 @@ public class SpecialInstance : MonoBehaviour
     {
         while(true)
         {
-            SpawnMob(MobType.Aas);
+            SpawnMob(MobsType.Big1);
             yield return new WaitForSeconds(2);
         }
     }
 
-    public void SpawnMob(MobType mobType)
+    public void SpawnMob(MobsType mobType)
     {
         float xpos=Random.Range(-1.5f, 1.5f);
         float ypos = Random.Range(1.5f, 2.3f);

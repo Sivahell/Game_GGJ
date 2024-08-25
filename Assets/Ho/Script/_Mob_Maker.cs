@@ -8,9 +8,9 @@ public class _Mob_Maker : MonoBehaviour
     
     public GameObject mobPrefab;
     Queue<MobControl> MobControl_Queue = new();
-    public Hostile_Mob_Date[] dates;
+    public Mob_Data[] dates;
     float time;
-    Dictionary<MobType, Hostile_Mob> mobDatasDictionary = new();
+    Dictionary<MobsType, MobData> mobDatasDictionary = new();
     private object amobControl;
 
     void Start()
@@ -21,16 +21,16 @@ public class _Mob_Maker : MonoBehaviour
             mobControl.Deactive();
             MobControl_Queue.Enqueue(mobControl);
         }
-        foreach(Hostile_Mob_Date mob in dates)
+        foreach(Mob_Data mob in dates)
         {
-            mobDatasDictionary.Add(mob.hostile_Mob.mobtype, mob.hostile_Mob);
+            mobDatasDictionary.Add(mob.mobData.mobtype, mob.mobData);
         }
 
     }
 
-    public void Takeout(float X,float Y,float Z, MobType mobtype)
+    public void Takeout(float X,float Y,float Z, MobsType mobtype)
     {
-        Hostile_Mob mobdata = mobDatasDictionary[mobtype];
+        MobData mobdata = mobDatasDictionary[mobtype];
         MobControl mobControl = MobControl_Queue.Dequeue();
         mobControl.StartMove(mobdata);
         mobControl.gameObject.transform.position = new Vector3(X, Y, Z);
