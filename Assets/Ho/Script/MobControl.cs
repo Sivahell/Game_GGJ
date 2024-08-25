@@ -12,9 +12,11 @@ public class MobControl : MonoBehaviour
     public SpriteRenderer sd;
     public ParticleSystem slash;
     public ParticleSystem smoke;
+    public Collider col;
     //animator sss;
     public void StartMove(MobData mobData)
     {
+        col.enabled = true;
         //animator.runtime~~~=mobData.animtrctr;
         _speed = mobData.speed;
         flooring.SetFloor();
@@ -29,7 +31,7 @@ public class MobControl : MonoBehaviour
     {
         _speed = 0;
         slash.Play();
-        
+        col.enabled = false;
 
         LeanTween.value(1, 0, 0.8f).setOnUpdate((float val) =>
         {
