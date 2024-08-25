@@ -13,9 +13,10 @@ public class MobData
     public MobsType mobtype;
     public Sprite mobsprite;
     public float speed;
+    public Vector3 colliderSize;
 }
 
 public enum MobsType
 {
-   Big1, Big2, Big3, Big4, Big5
+   Big1, Big2, Big3, Big4, Big5,Small1, Small2, Small3
 }

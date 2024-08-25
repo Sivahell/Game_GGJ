@@ -11,7 +11,6 @@ public class _Mob_Maker : MonoBehaviour
     public Mob_Data[] dates;
     float time;
     Dictionary<MobsType, MobData> mobDatasDictionary = new();
-    private object amobControl;
 
     void Start()
     {
@@ -38,15 +37,7 @@ public class _Mob_Maker : MonoBehaviour
 
         time = 0;
     }
-    IEnumerator enumerator()
-    {
-        while (true)
-        {
-            MobControl mobControl = MobControl_Queue.Dequeue();
-            gameObject.SetActive(true);
-            yield return new WaitForSecondsRealtime(1f);
-        }
-    }
+
     public void IsBack(MobControl mobControl)
     {
         MobControl_Queue.Enqueue(mobControl);

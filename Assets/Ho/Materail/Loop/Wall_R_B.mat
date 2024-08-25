@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wall_R_1
+  m_Name: Wall_R_B
   m_Shader: {fileID: -6465566751694194690, guid: 400d27777e157a046a2dfd9af0f0a0d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -56,8 +56,8 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: -2
+    - _Speed: -1.5
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
     - _Scale: {r: 25, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

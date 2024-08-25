@@ -12,7 +12,7 @@ public class MobControl : MonoBehaviour
     public SpriteRenderer sd;
     public ParticleSystem slash;
     public ParticleSystem smoke;
-    public Collider col;
+    public BoxCollider col;
     //animator sss;
     public void StartMove(MobData mobData)
     {
@@ -23,7 +23,7 @@ public class MobControl : MonoBehaviour
 
         sp.sprite = mobData.mobsprite;
         sd.sprite = mobData.mobsprite;
-
+        col.size = mobData.colliderSize;
         gameObject.SetActive(true);
     }
 
@@ -40,6 +40,19 @@ public class MobControl : MonoBehaviour
         });
         LeanTween.delayedCall(0.2f, () => smoke.Play());
         LeanTween.delayedCall(1f, () => SpecialInstance.instance.mobMaker.IsBack(this));
+    }
+
+
+    internal Vector3 HitPlayerPos()
+    {
+        var pos= transform.position;
+        col.enabled = false;
+        LeanTween.delayedCall(1f, () =>
+        {
+            _speed = 0;
+            SpecialInstance.instance.mobMaker.IsBack(this);
+        });
+        return pos;
     }
 
 
