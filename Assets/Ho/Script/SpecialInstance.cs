@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecialInstance : MonoBehaviour
 {
     public static SpecialInstance instance;
-    public Hostile_Mob_Maker mobMaker;
+    public _Mob_Maker mobMaker;
     private void Awake()
     {
         instance = this;
@@ -21,15 +21,15 @@ public class SpecialInstance : MonoBehaviour
         while(true)
         {
             SpawnMob(MobType.Aas);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
         }
     }
 
     public void SpawnMob(MobType mobType)
     {
-        float xpos=Random.Range(-1, 1);
-        float ypos = Random.Range(1.5f, 2.5f);
-        mobMaker.Takeout(xpos, ypos, 20, mobType);
+        float xpos=Random.Range(-1.5f, 1.5f);
+        float ypos = Random.Range(1.5f, 2.3f);
+        mobMaker.Takeout(xpos, ypos, 30, mobType);
     }
 
 

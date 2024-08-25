@@ -15,7 +15,7 @@ public class _Blade_collision : MonoBehaviour
     private void OnTriggerEnter(Collider other)//¸I¼²Åé­«Å|
     {
         energy++;
-        SpecialInstance.instance.mobMaker.IsBack(other.gameObject);
+        SpecialInstance.instance.mobMaker.IsBack(other.GetComponent<MobControl>());
         energyBar.UpdateEnergy(energy);
         if (energy >= 10)
         {

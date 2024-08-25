@@ -14,7 +14,7 @@ public class _pp_collision : MonoBehaviour
     private void OnTriggerEnter(Collider other)//¸I¼²Åé­«Å|
     {
         hp--;
-        SpecialInstance.instance.mobMaker.IsBack(other.gameObject);
+        SpecialInstance.instance.mobMaker.IsBack(other.GetComponent<MobControl>());
         hpBar.UpdateEnergy(hp);
         if (hp <= 0)
         {
