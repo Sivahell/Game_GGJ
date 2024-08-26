@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 405, y: 178}
-  m_SizeDelta: {x: 1255.2, y: 279}
+  m_AnchoredPosition: {x: 405, y: 215.7}
+  m_SizeDelta: {x: 1104.2, y: 279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22791645
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Free  Saber
+  m_text: Defying the Sword
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e09dd762b1d2b3646b9a3a2f7277dff2, type: 2}
   m_sharedMaterial: {fileID: -3858490391602711211, guid: e09dd762b1d2b3646b9a3a2f7277dff2, type: 2}
@@ -207,8 +207,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 134.1
-  m_fontSizeBase: 134.1
+  m_fontSize: 127.39
+  m_fontSizeBase: 127.39
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

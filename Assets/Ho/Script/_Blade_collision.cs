@@ -19,9 +19,10 @@ public class _Blade_collision : MonoBehaviour
         other.GetComponent<MobControl>().BeHitted();
         slashSfx.Play();
         energyBar.UpdateEnergy(energy);
-        if (energy >= 10)
+        if (energy >= max_Energy)
         {
             Debug.Log("¼C Energy is max");
+            EndFade.instance.End(EndType.Win);
         }
         BladeMove.instance.SetSpeedFactor(1-(float)energy/(float)max_Energy);
     }   
