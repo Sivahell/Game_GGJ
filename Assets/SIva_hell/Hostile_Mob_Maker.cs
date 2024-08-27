@@ -40,7 +40,7 @@ public class Hostile_Mob_Maker : MonoBehaviour
         gameObject.SetActive(true);
         gameObject.transform.position = new Vector3(X, Y, Z);
         gameObject.name = mobdata.China_Name;
-        gameObject.GetComponent<Animator>().runtimeAnimatorController = mobdata.China_Ani;
+        //gameObject.GetComponent<Animator>().runtimeAnimatorController = mobdata.China_Ani;
         time = 0;
     }
     IEnumerator enumerator()

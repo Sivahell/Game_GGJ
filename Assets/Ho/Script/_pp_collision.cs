@@ -15,6 +15,7 @@ public class _pp_collision : MonoBehaviour
     private void OnTriggerEnter(Collider other)//¸I¼²Åé­«Å|
     {
         hp--;
+        hpBar.UpdateEnergy(hp);
         var hitPos = other.GetComponent<MobControl>().HitPlayerPos();
 
 
@@ -22,9 +23,10 @@ public class _pp_collision : MonoBehaviour
         blood.transform.position = hitPos;
         blood.Play();
         hittedSfx.Play();
-        hpBar.UpdateEnergy(hp);
+        
         if (hp <= 0)
         {
+            EndFade.instance.End(EndType.Lose);
             Debug.Log("PlayerDead");
         }
 

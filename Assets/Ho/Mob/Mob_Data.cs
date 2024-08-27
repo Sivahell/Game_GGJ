@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+
 using UnityEngine;
 [CreateAssetMenu(fileName = "Mob_Data", menuName = "ScriptableObjects/Mob_Data")]
 public class Mob_Data : ScriptableObject
